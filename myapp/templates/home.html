@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Rest of your head content -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* background: url("{% static 'images/cub-club-logo.png' %}") no-repeat center center fixed; */
+            /* background-size: cover; */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        #buttonContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Online Retail App</h1>
+        
+        <!-- Add other content here -->
+
+        <div id="buttonContainer">
+            <button onclick="window.location.href='http://127.0.0.1:8000/cart'">Go to Cart</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/customers'">Go to Customers</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/items'">Go to Items</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/orders'">Go to Orders</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/payments'">Go to Payments</button>
+            <button onclick="window.location.href='http://127.0.0.1:8000/order-items'">Go to Order Items</button>
+        </div>
+    </div>
+</body>
+</html>

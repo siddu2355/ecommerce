@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Shopping Cart</h1>
+
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer ID</th>
+                    <th>Item ID</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cart data will be inserted here dynamically -->
+            </tbody>
+        </table>
+
+        <script>
+            // Function to fetch and populate data for the shopping cart
+            function fetchCartData() {
+                fetch('http://127.0.0.1:8000/store/cart/')
+                    .then(response => response.json())
+                    .then(data => {
+                        const cartTableBody = document.querySelector('#cartTable tbody');
+
+                        // Populate the table with cart data
+                        data.forEach(cartItem => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${cartItem.cart_id}</td>
+                                <td>${cartItem.customer_id}</td>
+                                <td>${cartItem.item_id}</td>
+                                <td>${cartItem.quantity}</td>
+                            `;
+                            cartTableBody.appendChild(row);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching cart data:', error));
+            }
+
+            // Fetch data for the shopping cart
+            fetchCartData();
+        </script>
+    </div>
+</body>
+</html>
